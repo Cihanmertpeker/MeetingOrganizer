@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MeetingOrganizer.DataAccessLayer\MeetingOrganizer.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\MeetingOrganizer.DtoLayer\MeetingOrganizer.DtoLayer.csproj" />
   </ItemGroup>
 
 </Project>

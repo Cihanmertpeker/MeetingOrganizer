@@ -1,55 +1,75 @@
-﻿@*  @using MeetingOrganizerWebUI.Dtos.MeetingDtos 
- *@
+﻿@model List<MeetingOrganizer.DtoLayer.MeetingDtos.ResultMeetingDto>
 
 @{
     Layout = null;
-	int count = 0;
-
+    int count = 0;
 }
 
-<div class="content">
-	<div class="container-fluid">
-		<h4 class="page-title">Meeting List</h4>
-		<div class="row">
-			<div class="col-md-12">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-				<div class="card">
-					<div class="card-header">
-						<div class="card-title">Ürün Listesi</div>
-					</div>
-					<div class="card-body">
-						<table class="table mt-3">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Subject</th>
-									<th scope="col">Meeting Date</th>
-									<th scope="col">Start Time</th>
-									<th scope="col">End time</th>
-									<th scope="col">Edit</th>
-									<th scope="col">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach (var item in Model)
-								{
-									count++;
-									<tr>
-										<th>@count</th>
-										<td>@item.ProductName</td>
-										<td>@item.Price</td>
-										<td>@item.CategoryName</td>
-										<td>@item.ProductStatus</td>
-										<td><a href="/Meeting/UpdateMeeting/@item.MeetingId" class="btn btn-outline-success">Edit</a></td>
-										<td><a href="/Meeting/DeleteMeeting/@item.MeetingId" class="btn btn-outline-danger">Delete</a></td>
-									</tr>
-								}
-							</tbody>
-						</table>
-						<a href="/Meeting/CreateMeeting/" class="btn btn-outline-primary">Set New Meeting</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="content">
+        <div class="container-fluid">
+            <h4 class="page-title">Meeting List</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Meetings</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered mt-3">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Subject</th>
+                                        <th scope="col">Meeting Date</th>
+                                        <th scope="col">Start Time</th>
+                                        <th scope="col">End Time</th>
+                                        <th scope="col" colspan="2" class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.MeetingSubject</td>
+                                            <td>@item.MeetingDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@item.MeetStartTime.ToString("HH:mm")</td>
+                                            <td>@item.MeetEndTime.ToString("HH:mm")</td>
+                                            <td>
+                                                <a href="/Meeting/UpdateMeeting/@item.MeetingId" class="btn btn-warning btn-sm">Edit</a>
+                                            </td>
+                                            <td>
+                                                <a href="/Meeting/DeleteMeeting/@item.MeetingId" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="text-right">
+                                <a href="/Meeting/CreateMeeting/" class="btn btn-outline-primary">Set New Meeting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

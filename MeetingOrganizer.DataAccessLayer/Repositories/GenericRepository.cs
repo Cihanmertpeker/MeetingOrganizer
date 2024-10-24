@@ -1,5 +1,6 @@
 ﻿using MeetingOrganizer.DataAccessLayer.Abstract;
 using MeetingOrganizer.DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace MeetingOrganizer.DataAccessLayer.Repositories
 
         public void Delete(int id)
         {
-            _context.Remove(id);
+			var entity = _context.Set<T>().Find(id);
+            _context.Remove(entity);
             _context.SaveChanges();
         }
 
