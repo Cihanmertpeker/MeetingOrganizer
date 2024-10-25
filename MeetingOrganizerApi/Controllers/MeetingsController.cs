@@ -45,7 +45,7 @@ namespace MeetingOrganizerApi.Controllers
         public IActionResult Create([FromBody] CreateMeetingDto createMeetingDto)
         {
             var newValue = _mapper.Map<Meeting>(createMeetingDto);
-            _meetingService.TCreate(newValue);
+            _meetingService.TCreate(newValue);            
             return Ok();
         }
 

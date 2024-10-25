@@ -43,6 +43,10 @@ namespace MeetingOrganizer.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ParticipantIds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MeetingId");
 
                     b.ToTable("Meetings");
@@ -56,10 +60,6 @@ namespace MeetingOrganizer.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ParticipantId"));
 
-                    b.Property<string>("Company")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -71,48 +71,6 @@ namespace MeetingOrganizer.DataAccessLayer.Migrations
                     b.HasKey("ParticipantId");
 
                     b.ToTable("Participants");
-                });
-
-            modelBuilder.Entity("MeetingOrganizer.EntityLayer.Entities.ParticipantMeeting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MeetingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParticipantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MeetingId");
-
-                    b.HasIndex("ParticipantId");
-
-                    b.ToTable("ParticipantMeetings");
-                });
-
-            modelBuilder.Entity("MeetingOrganizer.EntityLayer.Entities.ParticipantMeeting", b =>
-                {
-                    b.HasOne("MeetingOrganizer.EntityLayer.Entities.Meeting", "Meeting")
-                        .WithMany()
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MeetingOrganizer.EntityLayer.Entities.Participant", "Participant")
-                        .WithMany()
-                        .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Meeting");
-
-                    b.Navigation("Participant");
                 });
 #pragma warning restore 612, 618
         }

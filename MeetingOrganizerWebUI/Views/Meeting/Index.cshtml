@@ -1,20 +1,11 @@
 ﻿@model List<MeetingOrganizer.DtoLayer.MeetingDtos.ResultMeetingDto>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
     int count = 0;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meeting List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+
 
     <div class="content">
         <div class="container-fluid">
@@ -48,17 +39,19 @@
                                             <td>@item.MeetStartTime.ToString("HH:mm")</td>
                                             <td>@item.MeetEndTime.ToString("HH:mm")</td>
                                             <td>
-                                                <a href="/Meeting/UpdateMeeting/@item.MeetingId" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="/Meeting/UpdateMeeting/@item.MeetingId" class="btn btn-warning btn-sm">Edit / Details</a>
                                             </td>
                                             <td>
-                                                <a href="/Meeting/DeleteMeeting/@item.MeetingId" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
+                                            <a href="/Meeting/DeleteMeeting/@item.MeetingId" class="btn btn-danger btn-sm" onclick="return confirmDelete();">Delete</a>
+                                        </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                             <div class="text-right">
                                 <a href="/Meeting/CreateMeeting/" class="btn btn-outline-primary">Set New Meeting</a>
+                                <a href="/Participant/Index/" class="btn btn-outline-primary">Participant List</a>
+
                             </div>
                         </div>
                     </div>
@@ -67,9 +60,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="~/js/site.js"></script>
-</body>
-</html>
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this meeting?');
+    }
+</script>

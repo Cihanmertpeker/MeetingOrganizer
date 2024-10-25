@@ -12,10 +12,8 @@ namespace MeetingOrganizer.DataAccessLayer.Concrete
     {
         public MeetingOrganizerContext(DbContextOptions options) :base(options)
         {
-            //optionsBuilder.UseSqlServer("Server=.\\MSSQLSERVER01; initial Catalog=MeetingOrganizerDb; integrated Security= true;Trust Server Certificate=True;");
         }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
-        public DbSet<ParticipantMeeting> ParticipantMeetings { get; set; }
     }
 }

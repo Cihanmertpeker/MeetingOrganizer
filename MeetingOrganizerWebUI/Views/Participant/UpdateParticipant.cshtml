@@ -1,0 +1,40 @@
+﻿@model MeetingOrganizer.DtoLayer.ParticipantDtos.UpdateParticipantDto
+
+@{
+    ViewData["Title"] = "UpdateParticipant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Update Participant</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div class="card">
+                        <div class="card-header">
+                        </div>
+                        <input type="hidden" asp-for="ParticipantId" />
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                <input type="text" class="form-control" asp-for="Name" id="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Surname">Surname</label>
+                                <input type="text" class="form-control" asp-for="Surname" id="Surname" required>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button type="submit" class="btn btn-primary">Update Participant</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

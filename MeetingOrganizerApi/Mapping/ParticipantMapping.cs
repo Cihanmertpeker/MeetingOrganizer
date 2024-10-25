@@ -5,11 +5,13 @@ using MeetingOrganizer.EntityLayer.Entities;
 
 namespace MeetingOrganizerApi.Mapping
 {
-	public class ParticipantMeeting:Profile
+	public class ParticipantMapping:Profile
 	{
-        public ParticipantMeeting()
+        public ParticipantMapping()
         {
 			CreateMap<Participant, ResultParticipantDto>().ReverseMap();
+			CreateMap<Participant, CreateParticipantDto>().ReverseMap();
+			CreateMap<Participant, UpdateParticipantDto>().ReverseMap();
 
 		}
 	}

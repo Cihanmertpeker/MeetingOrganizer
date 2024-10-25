@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace MeetingOrganizer.DtoLayer.ParticipantDtos
 {
-	public class ResultParticipantDto
-	{
-        public int ParticipantId { get; set; }
+    public class CreateParticipantDto
+    {
         public string Name { get; set; }
         public string Surname { get; set; }
-
 
     }
 }

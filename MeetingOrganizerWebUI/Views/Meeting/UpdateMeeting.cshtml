@@ -1,39 +1,41 @@
-﻿@model MeetingOrganizer.DtoLayer.MeetingDtos.CreateMeetingDto
+﻿@model MeetingOrganizer.DtoLayer.MeetingDtos.UpdateMeetingDto
 
 @{
-    ViewData["Title"] = "CreateMeeting";
+    ViewData["Title"] = "UpdateMeeting";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Set New Meeting</h4>
+        <h4 class="page-title">Update Meeting</h4>
         <div class="row">
             <div class="col-md-12">
                 <form method="post">
                     <div class="card">
                         <div class="card-header">
                         </div>
+                        <input type="hidden" asp-for="MeetingId" />
+
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="productname">Subject</label>
-                                <input type="text" class="form-control" asp-for="MeetingSubject" id="MeetingSubject" required>
+                                <input type="text" class="form-control" asp-for="MeetingSubject" name="MeetingSubject" id="MeetingSubject" required>
                             </div>
                             <div class="form-group">
                                 <label for="meetingDate">Date</label>
-                                <input type="date" class="form-control" asp-for="MeetingDate" id="meetingDate" required>
+                                <input type="date" class="form-control" asp-for="MeetingDate" name="MeetingDate" id="meetingDate" required>
                             </div>
                             <div class="form-group">
                                 <label for="startTime">Start Time</label>
-                                <input type="datetime" class="form-control" asp-for="MeetStartTime" id="startTime" required >
+                                <input type="time" class="form-control" asp-for="MeetStartTime" name="MeetStartTime" id="startTime" required>
                             </div>
                             <div class="form-group">
                                 <label for="endTime">End Time</label>
-                                <input type="datetime" class="form-control" asp-for="MeetEndTime" id="endTime" required>
+                                <input type="time" class="form-control" asp-for="MeetEndTime" name="MeetEndTime" id="MeetEndTime" required>
                             </div>
                             <div class="form-group">
                                 <label for="participants">Select Participants:</label>
-                                <select asp-for=ParticipantIds id="ParticipantMeetings" multiple="multiple" class="form-control" name="ParticipantIds">
+                                <select asp-for=ParticipantIds id="participants" multiple="multiple" class="form-control" name="ParticipantIds">
                                     @foreach (var x in ViewBag.Participants)
                                     {
                                         <option value="@x.Value">@x.Text</option>
@@ -42,7 +44,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <button type="submit" class="btn btn-primary">Create Meeting</button>
+                            <button type="submit" class="btn btn-primary">Update Meeting</button>
                         </div>
                     </div>
                 </form>

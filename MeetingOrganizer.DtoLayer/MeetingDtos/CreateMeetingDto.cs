@@ -14,5 +14,7 @@ namespace MeetingOrganizer.DtoLayer.MeetingDtos
         public DateTime MeetStartTime { get; set; }
         public DateTime MeetEndTime { get; set; }
 
+        public List<int> ParticipantIds { get; set; }
+
     }
 }
